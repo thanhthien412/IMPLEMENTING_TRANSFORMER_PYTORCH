@@ -34,8 +34,8 @@ class Dataset(Dataset):
     def __getitem__(self, idx):
         # Before return we will process to add padding and start end sign or we can process it before and after batch
         ori_sentence    = self.tokenize(self.ori_sentences[idx],self.ori_to_index,self.max_length,False,False)
-        decoder_input   = self.tokenize(self.trans_sentences[idx],self.trans_sentences,self.max_length,False,True)
-        trans_sentence    = self.tokenize(self.trans_sentences[idx],self.trans_sentences,self.max_length,True,False)
+        decoder_input   = self.tokenize(self.trans_sentences[idx],self.trans_sentences,self.max_length,True,False)
+        trans_sentence    = self.tokenize(self.trans_sentences[idx],self.trans_sentences,self.max_length,False,True)
         return ori_sentence,decoder_input,trans_sentence
 
 def my_collate_fn(batch):

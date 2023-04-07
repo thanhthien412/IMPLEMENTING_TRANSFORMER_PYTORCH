@@ -114,7 +114,7 @@ def train_model(model,optimizer,num_epochs,dataloader_dict,Validation=False):
                         # signs shape (batch,max_length) 
                         # but target have only start sign otherwise signs have end sign
                         # compute loss
-                        loss = F.cross_entropy(outputs.permute(0,2,1),targets)
+                        loss = F.cross_entropy(outputs.permute(0,2,1),targets) # adding ignore_index depend on the index of padding_sign in trans_dict
                         
                         if phase == 'train':
                             loss.backward()
